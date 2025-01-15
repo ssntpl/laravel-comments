@@ -1,0 +1,32 @@
+{
+    "name": "ssntpl/laravel-comments",
+    "description": "Creating comments with information like text, date and type of comment along with user",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Ssntpl\\LaravelComments\\": "src"
+        }
+    },
+    "authors": [
+        {
+            "name": "JYOTSANA SHARMAA",
+            "email": "jyotsana.sharma@ssntpl.in"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Ssntpl\\LaravelComments\\LaravelCommentsServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^7.4|^8.0",
+        "ssntpl/laravel-files": "^0.1.2"
+    },
+    "require-dev": {
+        "laravel/framework": "^9.0|^10.0|^11.0"
+    }
+}
