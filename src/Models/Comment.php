@@ -23,4 +23,16 @@ class Comment extends Model
      */
     protected $table = 'comments';
 
+    public function delete()
+    {
+        $commentFiles = $this->files()->get();
+        
+        foreach($commentFiles as $commentFile)
+        {
+            $commentFile->delete();
+        }
+
+        return parent::delete();
+    }
+
 }
