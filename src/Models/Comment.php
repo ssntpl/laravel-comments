@@ -10,10 +10,10 @@ class Comment extends Model
     use HasFiles;
 
     Protected $fillable = [
-        'date',
         'type',
         'text',
-        'user_id'
+        'user_id',
+        'created_at'
     ];
 
     /**
