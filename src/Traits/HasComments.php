@@ -18,7 +18,7 @@ trait HasComments
     {
         $commentAttributes = [];
 
-        foreach (['date', 'user_id', 'text', 'type', 'id'] as $field) {
+        foreach (['created_at', 'user_id', 'text', 'type', 'id'] as $field) {
             if (!empty($attributes[$field])) {
                 $commentAttributes[$field] = $attributes[$field];
             }

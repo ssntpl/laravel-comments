@@ -16,9 +16,8 @@ return new class extends Migration
             $table->unsignedBigInteger('owner_id');
             $table->string('owner_type');
             $table->foreignId('user_id')->nullable()->constrained()->onDelete('set null')->onUpdate('cascade');
-            $table->string('type');
+            $table->string('type')->nullable();
             $table->text('text');
-            $table->dateTime('date');
             $table->timestamps();
             $table->index(['owner_id', 'owner_type'], 'comments_owner_id_owner_type_index');
         });
