@@ -35,4 +35,9 @@ class Comment extends Model
         return parent::delete();
     }
 
+    public function owner()
+    {
+        return $this->morphTo();
+    }
+
 }
