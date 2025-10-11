@@ -24,7 +24,7 @@
     "minimum-stability": "dev",
     "require": {
         "php": "^7.4|^8.0",
-        "ssntpl/laravel-files": "^0.1.2"
+        "ssntpl/laravel-files": "^0.1.5"
     },
     "require-dev": {
         "laravel/framework": "^9.0|^10.0|^11.0"
