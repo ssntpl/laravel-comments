@@ -15,11 +15,16 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('owner_id');
             $table->string('owner_type');
-            $table->foreignId('user_id')->nullable()->constrained()->onDelete('set null')->onUpdate('cascade');
+            // No DB-level FK: the user model/table is app-configurable (config('comments.user_model')).
+            $table->unsignedBigInteger('user_id')->nullable()->index();
             $table->string('type')->nullable();
-            $table->text('text');
+            $table->text('body');
+            // Threading: a comment may be a reply to another comment.
+            $table->unsignedBigInteger('reply_to_comment_id')->nullable();
             $table->timestamps();
             $table->index(['owner_id', 'owner_type'], 'comments_owner_id_owner_type_index');
+            $table->index('reply_to_comment_id');
+            $table->foreign('reply_to_comment_id')->references('id')->on('comments')->nullOnDelete();
         });
     }
 

@@ -13,7 +13,7 @@ class LaravelCommentsServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->mergeConfigFrom(__DIR__ . '/../config/comments.php', 'comments');
     }
 
     /**
@@ -24,10 +24,17 @@ class LaravelCommentsServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
+            __DIR__ . '/../config/comments.php' => config_path('comments.php'),
+        ], 'laravel-comments-config');
+
+        $this->publishes([
             __DIR__ . '/../database/migrations/' => database_path('migrations'),
         ], 'laravel-comments-migrations');
 
-
-        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+        // Apps that own the `comments` schema themselves (e.g. otper) set
+        // `comments.auto_load_migrations` to false to avoid table collisions.
+        if (config('comments.auto_load_migrations', true)) {
+            $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+        }
     }
 }
